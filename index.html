@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub Mastery — The Complete Tutorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Fraunces:ital,wght@0,300;0,700;0,900;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<button class="mobile-toggle" id="mobileToggle" onclick="toggleSidebar()">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="#e6edf3" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+    </svg>
+    <div class="sidebar-logo-text">
+      <span>GitHub</span>
+      <span>Complete Tutorial</span>
+    </div>
+  </div>
+
+  <div class="search-wrap">
+    <input class="search-input" type="text" placeholder="Search topics..." id="searchInput" oninput="filterNav(this.value)">
+  </div>
+
+  <nav class="sidebar-nav" id="sidebarNav">
+    <div class="nav-section-label">Getting Started</div>
+    <a class="nav-link active" onclick="scrollTo('intro')"><span class="dot"></span>Introduction</a>
+    <a class="nav-link" onclick="scrollTo('setup')"><span class="dot"></span>Setup & Installation</a>
+    <a class="nav-link" onclick="scrollTo('concepts')"><span class="dot"></span>Core Concepts</a>
+
+    <div class="nav-section-label">Working Locally</div>
+    <a class="nav-link" onclick="scrollTo('repo')"><span class="dot"></span>Creating Repositories</a>
+    <a class="nav-link" onclick="scrollTo('commits')"><span class="dot"></span>Commits & Staging</a>
+    <a class="nav-link" onclick="scrollTo('branches')"><span class="dot"></span>Branches</a>
+
+    <div class="nav-section-label">Collaboration</div>
+    <a class="nav-link" onclick="scrollTo('remote')"><span class="dot"></span>Remote & GitHub.com</a>
+    <a class="nav-link" onclick="scrollTo('pullreq')"><span class="dot"></span>Pull Requests</a>
+    <a class="nav-link" onclick="scrollTo('issues')"><span class="dot"></span>Issues & Projects</a>
+
+    <div class="nav-section-label">Advanced</div>
+    <a class="nav-link" onclick="scrollTo('merge')"><span class="dot"></span>Merging & Conflicts</a>
+    <a class="nav-link" onclick="scrollTo('actions')"><span class="dot"></span>GitHub Actions</a>
+    <a class="nav-link" onclick="scrollTo('cheatsheet')"><span class="dot"></span>Cheat Sheet</a>
+  </nav>
+
+  <div style="padding: 8px 20px 12px;">
+    <div style="font-size:11px;color:var(--text3);margin-bottom:6px;">Progress</div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+
+  <div class="sidebar-footer">
+    <div>Built for developers who<br>want to master Git & GitHub</div>
+  </div>
+</aside>
+
+
+<main class="main">
+
+
+  <div class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      Complete Tutorial — From Zero to Advanced
+    </div>
+
+    <h1>Master <em>GitHub</em><br>from scratch.</h1>
+
+    <p class="hero-sub">
+      A complete, hands-on guide covering Git fundamentals, repository management, collaboration workflows, pull requests, GitHub Actions, and everything in between.
+    </p>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">12</span>
+        <span class="hero-stat-label">Chapters</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">50+</span>
+        <span class="hero-stat-label">Commands</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">100%</span>
+        <span class="hero-stat-label">Free</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <section class="section s1" id="intro">
+      <div class="section-header">
+        <div class="section-icon">🌐</div>
+        <div>
+          <div class="section-num">Chapter 01</div>
+          <h2>Introduction to Git & GitHub</h2>
+        </div>
+      </div>
+
+      <p><strong>Git</strong> is a distributed version control system created by Linus Torvalds in 2005. It tracks changes in your code over time, allows multiple developers to work simultaneously, and makes it possible to revert to any previous state of your project.</p>
+
+      <p><strong>GitHub</strong> is a cloud-based platform built on top of Git. It hosts your Git repositories online, adds collaboration tools like pull requests, code reviews, issue tracking, and CI/CD pipelines through GitHub Actions.</p>
+
+      <div class="callout callout-info">
+        <span class="callout-label">📘 Key Difference</span>
+        Git is the tool you install locally. GitHub is the online service that hosts your Git repositories and enables collaboration.
+      </div>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon">🔀</div>
+          <div class="card-title">Version Control</div>
+          <div class="card-desc">Track every change, who made it, and why — across all time.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">👥</div>
+          <div class="card-title">Collaboration</div>
+          <div class="card-desc">Multiple devs working on the same codebase without chaos.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔁</div>
+          <div class="card-title">Rollback</div>
+          <div class="card-desc">Instantly revert to any previous working state of your project.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🚀</div>
+          <div class="card-title">CI/CD</div>
+          <div class="card-desc">Automate testing and deployment with GitHub Actions.</div>
+        </div>
+      </div>
+    </section>
+
+   
+    <section class="section s2" id="setup">
+      <div class="section-header">
+        <div class="section-icon">⚙️</div>
+        <div>
+          <div class="section-num">Chapter 02</div>
+          <h2>Setup & Installation</h2>
+        </div>
+      </div>
+
+      <p>Before using Git, you need to install it and configure your identity. This is a one-time setup that associates your commits with your name and email.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-title">Install Git</div>
+            <div class="step-desc">Download from <strong>git-scm.com</strong> for Windows/macOS, or use your package manager on Linux.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-title">Set your identity</div>
+            <div class="step-desc">Configure your name and email globally for all repositories.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-title">Create a GitHub account</div>
+            <div class="step-desc">Sign up at <strong>github.com</strong> — free accounts get unlimited public and private repos.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-title">Set up SSH or HTTPS auth</div>
+            <div class="step-desc">SSH keys let you push/pull without typing a password every time.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+          <div class="code-label">bash — Initial Git Configuration</div>
+          <button class="code-copy" onclick="copyCode(this)">Copy</button>
+        </div>
+        <div class="code-body"><code><span class="c-comment"># Verify installation</span>
+<span class="c-cmd">git</span> <span class="c-flag">--version</span>
+
+<span class="c-comment"># Configure your identity (required)</span>
+<span class="c-cmd">git config</span> <span class="c-flag">--global</span> user.name <span class="c-str">"Your Name"</span>
+<span class="c-cmd">git config</span> <span class="c-flag">--global</span> user.email <span class="c-str">"you@example.com"</span>
+
+<span class="c-comment"># Set default editor (optional)</span>
+<span class="c-cmd">git config</span> <span class="c-flag">--global</span> core.editor <span class="c-str">"code --wait"</span>
+
+<span class="c-comment"># Set default branch name to 'main'</span>
+<span class="c-cmd">git config</span> <span class="c-flag">--global</span> init.defaultBranch <span class="c-val">main</span>
+
+<span class="c-comment"># Generate SSH key</span>
+<span class="c-cmd">ssh-keygen</span> <span class="c-flag">-t</span> ed25519 <span class="c-flag">-C</span> <span class="c-str">"you@example.com"</span>
+
+<span class="c-comment"># Copy public key to clipboard (macOS)</span>
+<span class="c-cmd">cat</span> ~/.ssh/id_ed25519.pub | pbcopy
+
+<span class="c-comment"># View your config</span>
+<span class="c-cmd">git config</span> <span class="c-flag">--list</span></code></div>
+      </div>
+
+      <div class="callout callout-tip">
+        <span class="callout-label">💡 Pro Tip</span>
+        After generating your SSH key, add the public key to GitHub: Settings → SSH and GPG Keys → New SSH Key. Then test with: <code class="inline">ssh -T git@github.com</code>
+      </div>
+    </section>
+
+
+    <section class="section s3" id="concepts">
+      <div class="section-header">
+        <div class="section-icon">🧠</div>
+        <div>
+          <div class="section-num">Chapter 03</div>
+          <h2>Core Concepts</h2>
+        </div>
+      </div>
+
+      <p>Understanding Git's mental model is crucial before writing any commands. Git has three primary local areas that your files move through:</p>
+
+      <div class="diagram">
+        <div class="diagram-title">Git's Three-Stage Architecture</div>
+        <div class="flow">
+          <div class="flow-box red">Working<br>Directory</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box orange">Staging<br>Area (Index)</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box blue">Local<br>Repository</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box green">Remote<br>(GitHub)</div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Concept</th><th>What it is</th><th>Command</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="highlight">Repository (repo)</td><td>A folder tracked by Git</td><td><code class="inline">git init</code></td></tr>
+            <tr><td class="highlight">Commit</td><td>A saved snapshot of changes</td><td><code class="inline">git commit</code></td></tr>
+            <tr><td class="highlight">Branch</td><td>An independent line of development</td><td><code class="inline">git branch</code></td></tr>
+            <tr><td class="highlight">Clone</td><td>A local copy of a remote repo</td><td><code class="inline">git clone</code></td></tr>
+            <tr><td class="highlight">HEAD</td><td>Pointer to the current branch tip</td><td><code class="inline">git log --oneline</code></td></tr>
+            <tr><td class="highlight">Remote</td><td>A repository hosted on GitHub</td><td><code class="inline">git remote</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+
+    <section class="section s4" id="repo">
+      <div class="section-header">
+        <div class="section-icon">📁</div>
+        <div>
+          <div class="section-num">Chapter 04</div>
+          <h2>Creating Repositories</h2>
+        </div>
+      </div>
+
+      <p>You can start a repository two ways: <strong>initialize a new one locally</strong>, or <strong>clone an existing one</strong> from GitHub.</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+          <div class="code-label">bash — Initialize & Clone</div>
+          <button class="code-copy" onclick="copyCode(this)">Copy</button>
+        </div>
+        <div class="code-body"><code><span class="c-comment"># ── Method 1: Start fresh locally ──</span>
+<span class="c-cmd">mkdir</span> my-project
+<span class="c-cmd">cd</span> my-project
+<span class="c-cmd">git init</span>
+
+<span class="c-comment"># ── Method 2: Clone from GitHub ──</span>
+<span class="c-cmd">git clone</span> https://github.com/username/repo-name.git
+
+<span class="c-comment"># Clone into a specific folder</span>
+<span class="c-cmd">git clone</span> https://github.com/username/repo-name.git my-folder
+
+<span class="c-comment"># Clone via SSH (recommended)</span>
+<span class="c-cmd">git clone</span> git@github.com:username/repo-name.git
+
+<span class="c-comment"># Check repository status</span>
+<span class="c-cmd">git status</span>
+
+<span class="c-comment"># View commit history</span>
+<span class="c-cmd">git log</span> <span class="c-flag">--oneline</span> <span class="c-flag">--graph</span></code></div>
+      </div>
+
+      <div class="callout callout-info">
+        <span class="callout-label">📘 .gitignore</span>
+        Create a <code class="inline">.gitignore</code> file in your root to tell Git which files to ignore (node_modules/, .env, build artifacts, etc). GitHub provides templates at <strong>gitignore.io</strong>.
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+          <div class="code-label">.gitignore — Common Patterns</div>
+          <button class="code-copy" onclick="copyCode(this)">Copy</button>
+        </div>
+        <div class="code-body"><code><span class="c-comment"># Dependencies</span>
+<span class="c-val">node_modules/</span>
+<span class="c-val">vendor/</span>
+
+<span class="c-comment"># Environment variables</span>
+<span class="c-val">.env</span>
+<span class="c-val">.env.local</span>
+
+<span class="c-comment"># Build outputs</span>
+<span class="c-val">dist/</span>
+<span class="c-val">build/</span>
+<span class="c-val">*.o</span>
+
+<span class="c-comment"># OS files</span>
+<span class="c-val">.DS_Store</span>
+<span class="c-val">Thumbs.db</span>
+
+<span class="c-comment"># IDE files</span>
+<span class="c-val">.vscode/</span>
+<span class="c-val">.idea/</span></code></div>
+      </div>
+    </section>
+
+
+    <section class="section s5" id="commits">
+      <div class="section-header">
+        <div class="section-icon">💾</div>
+        <div>
+          <div class="section-num">Chapter 05</div>
+          <h2>Commits & Staging</h2>
+        </div>
+      </div>
+
+      <p>A commit is a <strong>permanent snapshot</strong> of your staged changes. The staging area (index) lets you craft exactly what goes into each commit — you don't have to commit everything at once.</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+          <div class="code-label">bash — Staging & Committing</div>
+          <button class="code-copy" onclick="copyCode(this)">Copy</button>
+        </div>
+        <div class="code-body"><code><span class="c-comment"># Check which files changed</span>
+<span class="c-cmd">git status</span>
+
+<span class="c-comment"># Stage a specific file</span>
+<span class="c-cmd">git add</span> filename.js
+
+<span class="c-comment"># Stage all changes</span>
+<span class="c-cmd">git add</span> <span class="c-val">.</span>
+
+<span class="c-comment"># Stage parts of a file interactively</span>
+<span class="c-cmd">git add</span> <span class="c-flag">-p</span> filename.js
+
+<span class="c-comment"># Commit with a message</span>
+<span class="c-cmd">git commit</span> <span class="c-flag">-m</span> <span class="c-str">"feat: add user authentication"</span>
+
+<span class="c-comment"># Stage and commit tracked files in one step</span>
+<span class="c-cmd">git commit</span> <span class="c-flag">-am</span> <span class="c-str">"fix: resolve login bug"</span>
+
+<span class="c-comment"># Amend the last commit (before pushing)</span>
+<span class="c-cmd">git commit</span> <span class="c-flag">--amend</span> <span class="c-flag">-m</span> <span class="c-str">"fix: updated message"</span>
+
+<span class="c-comment"># View what changed</span>
+<span class="c-cmd">git diff</span>
+<span class="c-cmd">git diff</span> <span class="c-flag">--staged</span></code></div>
+      </div>
+
+      <div class="callout callout-tip">
+        <span class="callout-label">💡 Conventional Commits</span>
+        Use prefixes to make commit history readable: <code class="inline">feat:</code> (new feature), <code class="inline">fix:</code> (bug fix), <code class="inline">docs:</code> (docs), <code class="inline">chore:</code> (maintenance), <code class="inline">refactor:</code>, <code class="inline">test:</code>
+      </div>
+    </section>
+
+
+    <section class="section s6" id="branches">
+      <div class="section-header">
+        <div class="section-icon">🌿</div>
+        <div>
+          <div class="section-num">Chapter 06</div>
+          <h2>Branches</h2>
+        </div>
+      </div>
+
+      <p>Branches let you work on features, fixes, or experiments in <strong>isolation</strong> from the main codebase. They are cheap and fast — creating one is instantaneous in Git.</p>
+
+      <div class="diagram">
+        <div class="diagram-title">Branch Strategy — Feature Branch Workflow</div>
+        <div class="flow">
+          <div class="flow-box blue">main</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box purple">feature/login</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box orange">PR Review</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box green">Merged</div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+          <div class="code-label">bash — Branch Commands</div>
+          <button class="code-copy" onclick="copyCode(this)">Copy</button>
+        </div>
+        <div class="code-body"><code><span class="c-comment"># List all branches</span>
+<span class="c-cmd">git branch</span>
+
+<span class="c-comment"># Create a new branch</span>
+<span class="c-cmd">git branch</span> feature/my-feature
+
+<span class="c-comment"># Switch to a branch</span>
+<span class="c-cmd">git checkout</span> feature/my-feature
+
+<span class="c-comment"># Create AND switch in one command (modern)</span>
+<span class="c-cmd">git switch</span> <span class="c-flag">-c</span> feature/my-feature
+
+<span class="c-comment"># See all branches including remote</span>
+<span class="c-cmd">git branch</span> <span class="c-flag">-a</span>
+
+<span class="c-comment"># Rename current branch</span>
+<span class="c-cmd">git branch</span> <span class="c-flag">-m</span> new-name
+
+<span class="c-comment"># Delete a merged branch</span>
+<span class="c-cmd">git branch</span> <span class="c-flag">-d</span> feature/my-feature
+
+<span class="c-comment"># Force delete unmerged branch</span>
+<span class="c-cmd">git branch</span> <span class="c-flag">-D</span> feature/my-feature</code></div>
+      </div>
+    </section>
+
+
+    <section class="section s7" id="remote">
+      <div class="section-header">
+        <div class="section-icon">☁️</div>
+        <div>
+          <div class="section-num">Chapter 07</div>
+          <h2>Remote & GitHub.com</h2>
+        </div>
+      </div>
+
+      <p>A <strong>remote</strong> is a version of your repository hosted somewhere else — typically on GitHub. <code class="inline">origin</code> is the conventional name for your primary remote. You push changes up and pull changes down.</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+          <div class="code-label">bash — Remote Operations</div>
+          <button class="code-copy" onclick="copyCode(this)">Copy</button>
+        </div>
+        <div class="code-body"><code><span class="c-comment"># Add a remote</span>
+<span class="c-cmd">git remote add</span> origin git@github.com:user/repo.git
+
+<span class="c-comment"># List remotes</span>
+<span class="c-cmd">git remote</span> <span class="c-flag">-v</span>
+
+<span class="c-comment"># Push branch to remote (first time)</span>
+<span class="c-cmd">git push</span> <span class="c-flag">-u</span> origin main
+
+<span class="c-comment"># Push subsequent times</span>
+<span class="c-cmd">git push</span>
+
+<span class="c-comment"># Pull latest changes</span>
+<span class="c-cmd">git pull</span>
+
+<span class="c-comment"># Fetch without merging (inspect first)</span>
+<span class="c-cmd">git fetch</span> origin
+
+<span class="c-comment"># Push a feature branch</span>
+<span class="c-cmd">git push</span> <span class="c-flag">-u</span> origin feature/my-feature
+
+<span class="c-comment"># Delete a remote branch</span>
+<span class="c-cmd">git push</span> origin <span class="c-flag">--delete</span> feature/my-feature
+
+<span class="c-comment"># Change remote URL</span>
+<span class="c-cmd">git remote set-url</span> origin git@github.com:user/new-repo.git</code></div>
+      </div>
+
+      <div class="callout callout-warn">
+        <span class="callout-label">⚠️ Warning</span>
+        Never force push (<code class="inline">git push --force</code>) to shared branches like <strong>main</strong>. It rewrites history and can destroy teammates' work. Use <code class="inline">--force-with-lease</code> as a safer alternative.
+      </div>
+    </section>
+
+
+    <section class="section s8" id="pullreq">
+      <div class="section-header">
+        <div class="section-icon">🔀</div>
+        <div>
+          <div class="section-num">Chapter 08</div>
+          <h2>Pull Requests</h2>
+        </div>
+      </div>
+
+      <p>A <strong>Pull Request (PR)</strong> is a formal request to merge changes from one branch into another. It's the heart of collaborative development on GitHub — enabling code review, discussion, and automated checks before merging.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-title">Create a feature branch & commit</div>
+            <div class="step-desc">Always work on a dedicated branch, never directly on <code class="inline">main</code>.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-title">Push your branch to GitHub</div>
+            <div class="step-desc"><code class="inline">git push -u origin feature/branch-name</code></div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-title">Open a Pull Request on GitHub</div>
+            <div class="step-desc">Go to your repo on GitHub → "Compare & pull request" → Fill in title and description.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-title">Code Review & Discussion</div>
+            <div class="step-desc">Reviewers comment on specific lines, request changes, or approve the PR.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <div class="step-title">Merge the PR</div>
+            <div class="step-desc">Choose: Merge commit, Squash and merge, or Rebase and merge.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Merge Strategy</th><th>When to use</th><th>History</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="highlight">Merge commit</td><td>Preserve all commits and branch history</td><td>Full history kept</td></tr>
+            <tr><td class="highlight">Squash & merge</td><td>Combine all PR commits into one clean commit</td><td>Single commit</td></tr>
+            <tr><td class="highlight">Rebase & merge</td><td>Linear history without a merge commit</td><td>Rewritten, linear</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+
+    <section class="section s9" id="issues">
+      <div class="section-header">
+        <div class="section-icon">🐛</div>
+        <div>
+          <div class="section-num">Chapter 09</div>
+          <h2>Issues & Projects</h2>
+        </div>
+      </div>
+
+      <p>GitHub <strong>Issues</strong> are used to track bugs, feature requests, and tasks. They integrate deeply with pull requests — you can automatically close issues when a PR merges.</p>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon">🏷️</div>
+          <div class="card-title">Labels</div>
+          <div class="card-desc">Categorize issues: bug, enhancement, good first issue, help wanted.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🎯</div>
+          <div class="card-title">Milestones</div>
+          <div class="card-desc">Group issues into sprints or versions with a due date.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">👤</div>
+          <div class="card-title">Assignees</div>
+          <div class="card-desc">Assign issues to specific team members responsible for them.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">📋</div>
+          <div class="card-title">Projects</div>
+          <div class="card-desc">Kanban-style boards for organizing and prioritizing work.</div>
+        </div>
+      </div>
+
+      <div class="callout callout-tip">
+        <span class="callout-label">💡 Auto-close Issues</span>
+        In a PR description or commit, use keywords like <code class="inline">Fixes #42</code>, <code class="inline">Closes #15</code>, or <code class="inline">Resolves #7</code> to automatically close issues when the PR merges to main.
+      </div>
+    </section>
+
+
+    <section class="section s10" id="merge">
+      <div class="section-header">
+        <div class="section-icon">⚡</div>
+        <div>
+          <div class="section-num">Chapter 10</div>
+          <h2>Merging & Resolving Conflicts</h2>
+        </div>
+      </div>
+
+      <p>A <strong>merge conflict</strong> occurs when two branches modify the same line of a file differently. Git can't decide which version to keep, so it asks you to resolve it manually.</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+          <div class="code-label">bash — Merge & Conflict Resolution</div>
+          <button class="code-copy" onclick="copyCode(this)">Copy</button>
+        </div>
+        <div class="code-body"><code><span class="c-comment"># Merge a branch into current</span>
+<span class="c-cmd">git merge</span> feature/my-feature
+
+<span class="c-comment"># Rebase current branch onto another</span>
+<span class="c-cmd">git rebase</span> main
+
+<span class="c-comment"># After resolving conflicts, continue rebase</span>
+<span class="c-cmd">git rebase</span> <span class="c-flag">--continue</span>
+
+<span class="c-comment"># Abort a rebase</span>
+<span class="c-cmd">git rebase</span> <span class="c-flag">--abort</span>
+
+<span class="c-comment"># Stash uncommitted changes temporarily</span>
+<span class="c-cmd">git stash</span>
+
+<span class="c-comment"># Re-apply stashed changes</span>
+<span class="c-cmd">git stash pop</span>
+
+<span class="c-comment"># Undo last commit, keep changes staged</span>
+<span class="c-cmd">git reset</span> <span class="c-flag">--soft</span> HEAD~1
+
+<span class="c-comment"># Discard changes in working dir</span>
+<span class="c-cmd">git checkout</span> <span class="c-flag">--</span> filename.js</code></div>
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+          <div class="code-label">Conflict Markers in a File</div>
+          <button class="code-copy" onclick="copyCode(this)">Copy</button>
+        </div>
+        <div class="code-body"><code><span class="c-comment"><<<<<<< HEAD</span>
+<span class="c-val">console.log("Hello from main branch");</span>
+<span class="c-comment">=======</span>
+<span class="c-str">console.log("Hello from feature branch");</span>
+<span class="c-comment">>>>>>>> feature/my-feature</span>
+
+<span class="c-comment"># 1. Edit the file to keep what you want</span>
+<span class="c-comment"># 2. Remove the conflict markers</span>
+<span class="c-comment"># 3. Stage the resolved file</span>
+<span class="c-cmd">git add</span> filename.js
+
+<span class="c-comment"># 4. Complete the merge</span>
+<span class="c-cmd">git commit</span></code></div>
+      </div>
+    </section>
+
+
+    <section class="section s1" id="actions">
+      <div class="section-header">
+        <div class="section-icon">🤖</div>
+        <div>
+          <div class="section-num">Chapter 11</div>
+          <h2>GitHub Actions (CI/CD)</h2>
+        </div>
+      </div>
+
+      <p><strong>GitHub Actions</strong> is a powerful automation platform built into GitHub. It lets you run workflows automatically on events like push, pull request, or schedule. Common uses: testing, building, deploying, and linting.</p>
+
+      <div class="callout callout-info">
+        <span class="callout-label">📘 How it works</span>
+        Workflows are YAML files stored in <code class="inline">.github/workflows/</code>. They define triggers (events), jobs (virtual machines), and steps (individual commands or actions).
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+          <div class="code-label">.github/workflows/ci.yml — Example CI Pipeline</div>
+          <button class="code-copy" onclick="copyCode(this)">Copy</button>
+        </div>
+        <div class="code-body"><code><span class="c-comment"># Runs on every push and pull request to main</span>
+<span class="c-kw">name:</span> <span class="c-str">CI Pipeline</span>
+
+<span class="c-kw">on:</span>
+  <span class="c-kw">push:</span>
+    <span class="c-kw">branches:</span> [ <span class="c-str">main</span>, <span class="c-str">develop</span> ]
+  <span class="c-kw">pull_request:</span>
+    <span class="c-kw">branches:</span> [ <span class="c-str">main</span> ]
+
+<span class="c-kw">jobs:</span>
+  <span class="c-kw">build-and-test:</span>
+    <span class="c-kw">runs-on:</span> <span class="c-val">ubuntu-latest</span>
+
+    <span class="c-kw">steps:</span>
+      <span class="c-flag">- name:</span> <span class="c-str">Checkout code</span>
+        <span class="c-kw">uses:</span> <span class="c-val">actions/checkout@v4</span>
+
+      <span class="c-flag">- name:</span> <span class="c-str">Setup Node.js</span>
+        <span class="c-kw">uses:</span> <span class="c-val">actions/setup-node@v4</span>
+        <span class="c-kw">with:</span>
+          <span class="c-kw">node-version:</span> <span class="c-str">'20'</span>
+
+      <span class="c-flag">- name:</span> <span class="c-str">Install dependencies</span>
+        <span class="c-kw">run:</span> <span class="c-val">npm ci</span>
+
+      <span class="c-flag">- name:</span> <span class="c-str">Run tests</span>
+        <span class="c-kw">run:</span> <span class="c-val">npm test</span>
+
+      <span class="c-flag">- name:</span> <span class="c-str">Build project</span>
+        <span class="c-kw">run:</span> <span class="c-val">npm run build</span></code></div>
+      </div>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon">🧪</div>
+          <div class="card-title">Auto Testing</div>
+          <div class="card-desc">Run your test suite on every PR before it can merge.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🚀</div>
+          <div class="card-title">Auto Deploy</div>
+          <div class="card-desc">Deploy to production automatically on merge to main.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🧹</div>
+          <div class="card-title">Linting</div>
+          <div class="card-desc">Enforce code style and quality standards automatically.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">📦</div>
+          <div class="card-title">Publish</div>
+          <div class="card-desc">Publish npm packages or Docker images on new releases.</div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section s2" id="cheatsheet">
+      <div class="section-header">
+        <div class="section-icon">📄</div>
+        <div>
+          <div class="section-num">Chapter 12</div>
+          <h2>Git Cheat Sheet</h2>
+        </div>
+      </div>
+
+      <p>A quick-reference summary of the most important Git commands, organized by category.</p>
+
+      <div class="cheat-grid">
+        <div class="cheat-card">
+          <div class="cheat-card-head">🗂 Setup & Init</div>
+          <div class="cheat-row"><span class="cheat-cmd">git init</span><span class="cheat-desc">Init repo</span></div>
+          <div class="cheat-row"><span class="cheat-cmd">git clone &lt;url&gt;</span><span class="cheat-desc">Clone remote</span></div>
+          <div class="cheat-row"><span class="cheat-cmd">git config --global</span><span class="cheat-desc">Set global config</span></div>
+        </div>
+
+        <div class="cheat-card">
+          <div class="cheat-card-head">📸 Staging & Commits</div>
+          <div class="cheat-row"><span class="cheat-cmd">git add .</span><span class="cheat-desc">Stage all</span></div>
+          <div class="cheat-row"><span class="cheat-cmd">git commit -m ""</span><span class="cheat-desc">Commit with msg</span></div>
+          <div class="cheat-row"><span class="cheat-cmd">git status</span><span class="cheat-desc">Check state</span></div>
+        </div>
+
+        <div class="cheat-card">
+          <div class="cheat-card-head">🌿 Branches</div>
+          <div class="cheat-row"><span class="cheat-cmd">git branch</span><span class="cheat-desc">List branches</span></div>
+          <div class="cheat-row"><span class="cheat-cmd">git switch -c</span><span class="cheat-desc">Create & switch</span></div>
+          <div class="cheat-row"><span class="cheat-cmd">git branch -d</span><span class="cheat-desc">Delete branch</span></div>
+        </div>
+
+        <div class="cheat-card">
+          <div class="cheat-card-head">☁️ Remote</div>
+          <div class="cheat-row"><span class="cheat-cmd">git push</span><span class="cheat-desc">Push to remote</span></div>
+          <div class="cheat-row"><span class="cheat-cmd">git pull</span><span class="cheat-desc">Pull from remote</span></div>
+          <div class="cheat-row"><span class="cheat-cmd">git fetch</span><span class="cheat-desc">Fetch (no merge)</span></div>
+        </div>
+
+        <div class="cheat-card">
+          <div class="cheat-card-head">🔀 Merge & Rebase</div>
+          <div class="cheat-row"><span class="cheat-cmd">git merge &lt;branch&gt;</span><span class="cheat-desc">Merge branch</span></div>
+          <div class="cheat-row"><span class="cheat-cmd">git rebase main</span><span class="cheat-desc">Rebase onto main</span></div>
+          <div class="cheat-row"><span class="cheat-cmd">git stash</span><span class="cheat-desc">Stash changes</span></div>
+        </div>
+
+        <div class="cheat-card">
+          <div class="cheat-card-head">🔍 Inspection</div>
+          <div class="cheat-row"><span class="cheat-cmd">git log --oneline</span><span class="cheat-desc">Compact history</span></div>
+          <div class="cheat-row"><span class="cheat-cmd">git diff</span><span class="cheat-desc">See changes</span></div>
+          <div class="cheat-row"><span class="cheat-cmd">git blame &lt;file&gt;</span><span class="cheat-desc">Who wrote what</span></div>
+        </div>
+      </div>
+
+      <div class="callout callout-tip">
+        <span class="callout-label">🎉 You're Ready!</span>
+        You now know enough Git and GitHub to contribute to any project in the world. The best way to get better is to start — create a repo, make commits, open pull requests, and collaborate with others!
+      </div>
+
+      <div style="margin-top: 32px; display: flex; gap: 10px; flex-wrap: wrap;">
+        <span class="tag">🌟 Star repos you like</span>
+        <span class="tag">🍴 Fork & contribute</span>
+        <span class="tag">📝 Write good READMEs</span>
+        <span class="tag">🤝 Open source</span>
+        <span class="tag">🔒 Protect main branch</span>
+        <span class="tag">✅ Code review</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="nav-bottom">
+    <div style="color:var(--text3);font-size:12px;">
+      <span style="color:var(--accent2)">●</span>&nbsp; Git & GitHub Complete Tutorial
+    </div>
+    <a class="nav-btn" href="https://docs.github.com" target="_blank">
+      GitHub Docs
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    </a>
+  </div>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
